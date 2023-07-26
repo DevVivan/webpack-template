@@ -11,6 +11,14 @@ module.exports = {
     filename: '[name].[contenthash].js',
     clean: true,
   },
+  devServer: {
+    static: './dist',
+    open: {
+      app: {
+        name: 'Google Chrome'
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -37,9 +45,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack App',
+      title: 'Document',
       filename: 'index.html',
       template: 'src/template.html',
     }),
   ],
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };
